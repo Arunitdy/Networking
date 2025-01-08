@@ -8,32 +8,32 @@
 
 int main(){
 
-int socketResponse=socket(AF_INET,SOCK_STREAM,0);
+    int socketResponse=socket(AF_INET,SOCK_STREAM,0);
 
-struct sockaddr_in client;
+    struct sockaddr_in client;
 
-if(socketResponse == -1){
+    if(socketResponse == -1){
 
-printf("error");
-}else{
+        printf("error");
+    }else{
 
-printf("\n socket: %d\n",socketResponse);
+        printf("\n socket: %d\n",socketResponse);
 
-client.sin_family = AF_INET;
-client.sin_addr.s_addr = inet_addr("127.0.0.1");
-client.sin_port = htons(8888);
+        client.sin_family = AF_INET;
+        client.sin_addr.s_addr = inet_addr("127.0.0.1");
+        client.sin_port = htons(8888);
 
-if(connect(socketResponse,(struct sockaddr *)&client, sizeof(client)) < 0){
+        if(connect(socketResponse,(struct sockaddr *)&client, sizeof(client)) < 0){
 
-printf("error connect\n");
+            printf("error connect\n");
 
-}else{
+        }else{
 
-printf("connect %d\n",client.sin_port);
-}
+            printf("connect %d\n",client.sin_port);
+        }
 
 
-}
+    }
 
 
 }
