@@ -8,55 +8,55 @@
 
 int main(){
 
-int socketResponse=socket(AF_INET,SOCK_STREAM,0);
+    int socketResponse=socket(AF_INET,SOCK_STREAM,0);
 
-struct sockaddr_in saddr,caddr;
+    struct sockaddr_in saddr,caddr;
 
 
-if(socketResponse == -1){
+    if(socketResponse == -1){
 
-    printf("error socket");
-
-}else{
-    printf("\n socket: %d\n",socketResponse);
-
-    saddr.sin_family = AF_INET;
-    saddr.sin_addr.s_addr = inet_addr("127.0.0.1");
-    saddr.sin_port = htons(8888);
-     //bind
-    if(bind(socketResponse,(struct sockaddr*)&saddr,sizeof(saddr)) < 0){
-
-        printf("error in bind\n");
+        printf("error socket");
 
     }else{
-        
-        printf("bind\n");
+        printf("\n socket: %d\n",socketResponse);
 
-        if(listen(socketResponse,5) < 0){
+        saddr.sin_family = AF_INET;
+        saddr.sin_addr.s_addr = inet_addr("127.0.0.1");
+        saddr.sin_port = htons(8888);
+        //bind
+        if(bind(socketResponse,(struct sockaddr*)&saddr,sizeof(saddr)) < 0){
 
-            printf("error listen\n");
+            printf("error in bind\n");
 
         }else{
+            
+            printf("bind\n");
 
-            printf("listening \n");
-            //accept
-            int clen=sizeof(caddr);
+            if(listen(socketResponse,5) < 0){
 
-            int isock = accept(socketResponse,(struct sockaddr*) &caddr,&clen);
-
-            if(isock < 0){
-
-                printf("error acceping\n");
+                printf("error listen\n");
 
             }else{
 
-                printf("accepted  \n port: %d\n",saddr.sin_port);
+                printf("listening \n");
+                //accept
+                int clen=sizeof(caddr);
+
+                int isock = accept(socketResponse,(struct sockaddr*) &caddr,&clen);
+
+                if(isock < 0){
+
+                    printf("error acceping\n");
+
+                }else{
+
+                    printf("accepted  \n port: %d\n",saddr.sin_port);
+
+                }
 
             }
-
         }
     }
-}
 
 
 }
