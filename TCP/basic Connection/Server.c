@@ -36,7 +36,7 @@ int main() {
     saddr.sin_addr.s_addr = inet_addr("127.0.0.1");
     saddr.sin_port = htons(8888);
 
-    // Bind
+    // Bind'
     if (bind(socketResponse, (struct sockaddr *)&saddr, sizeof(saddr)) < 0) {
         printf("Error binding\n");
         return -1;
